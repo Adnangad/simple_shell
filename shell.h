@@ -11,7 +11,7 @@ void prompt_shell(void);
 void print(const char *text);
 void line_reader(char *input, size_t size);
 void execute(char *input);
-
+void exec_arg(char *input);
 
 
 #endif
