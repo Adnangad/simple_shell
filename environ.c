@@ -1,20 +1,21 @@
 #include "shell.h"
-char **environ;
+
 /**
  * envi_ron - implements the env built in
  * @input:the users input
  *
  * Return:none
  */
-void envi_ron(char*input)
+void envi_ron(char *input)
 {
+	extern char **environ;
 	int p3, status;
 
 	if (strcmp(input, "env") == 0)
 	{
 		p3 = fork();
 
-		if(p3 == 0)
+		if (p3 == 0)
 		{
 			if (execvp("env", environ) == -1)
 			{
