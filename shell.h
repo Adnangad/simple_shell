@@ -15,7 +15,7 @@ void line_reader(char *input, size_t size);
 void execute(char *input);
 void exec_arg(char *input);
 void execp(char *input);
-
+void ex_it(char *input);
 
 
 #endif

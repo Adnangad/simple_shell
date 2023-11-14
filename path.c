@@ -24,6 +24,7 @@ void execp(char *input)
 		}
 	}
 	token[i] = NULL;
+	ex_it(input);
 	cmd = token[0];
 
 		p1 = fork();
