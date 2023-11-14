@@ -14,13 +14,17 @@ int main(void)
 		prompt_shell();
 		line_reader(input, sizeof(input));
 
-		if (strchr(input, ' ') != NULL)
+		if (strchr(input, ' ') == NULL && strchr(input, '/') != NULL)
+		{
+			execute(input);
+		}
+		else if (strchr(input, ' ') != NULL && strchr(input, '/') != NULL)
 		{
 			exec_arg(input);
 		}
-		else
+		if (strchr(input, '/') == NULL)
 		{
-			execute(input);
+			execp(input);
 		}
 	}
 	return (0);
