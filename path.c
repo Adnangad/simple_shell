@@ -25,9 +25,9 @@ void execp(char *input)
 	}
 	token[i] = NULL;
 	ex_it(input);
+	envi_ron(input);
 	cmd = token[0];
-
-		p1 = fork();
+	p1 = fork();
 
 		if (p1 == 0)
 		{
