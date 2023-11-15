@@ -61,8 +61,7 @@ void exec_arg(char *input)
 	}
 	token[i] = NULL;
 
-	if (strchr(input, ' ') != NULL)
-	{
+	
 		p2 = fork();
 
 		if (p2 == 0)
@@ -80,5 +79,5 @@ void exec_arg(char *input)
 		{
 			wait(&status);
 		}
-	}
+	
 }

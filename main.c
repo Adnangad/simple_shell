@@ -14,6 +14,13 @@ int main(void)
 	{
 		prompt_shell();
 		line_reader(input, sizeof(input));
-		execute(input);
+		if (strchr(input, ' ') == NULL)
+		{
+			execute(input);
+		}
+		else
+		{
+			exec_arg(input);
+		}
 	}
 }
