@@ -9,12 +9,17 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <stdarg.h>
-#define MAX_TOKENS 8
-#define MAX_INPUT_LENGTH 100
-ssize_t read_input(char **input);
-void tokenize_input(char *input, char *token[MAX_TOKENS]);
-int execute_command_simple(char *token[]);
-int execute_command_with_arguments(char *token[]);
-int execute_command_with_path(char *token[], char *envp[]);
+
+void prompt_shell(void);
 void print(const char *text);
+void line_reader(char *input, size_t size);
+void execute(char *input);
+void exec_arg(char *input);
+void execp(char *input);
+void ex_it(char *input);
+void envi_ron(char *input);
+int _printf(const char *format, ...);
+int putstr(char *str);
+void printc(char c);
+
 #endif
