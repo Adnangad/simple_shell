@@ -22,5 +22,9 @@ int main(void)
 		{
 			exec_arg(input);
 		}
+		if (strchr(input, '/') == NULL)
+		{
+			execp(input);
+		}
 	}
 }

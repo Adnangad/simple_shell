@@ -81,3 +81,74 @@ void exec_arg(char *input)
 		}
 	
 }
+
+/**
+ * execp - handles path
+ * @input:users input
+ *
+ * Return:none
+ */
+void execp(char *input)
+{
+	char *token[10];
+        int i, status, p3;
+        char *command;
+
+        token[0] = strtok(input, " ");
+
+        for (i = 1; i < 9; i++)
+        {
+                token[i] = strtok(NULL, " ");
+
+                if (token[i] == NULL)
+                {
+                        break;
+                }
+        }
+        token[i] = NULL;
+	command = token[0];
+
+	if (!command_exists(command))
+	{
+		fprintf(stderr, "Error: Command '%s' not found\n", command);
+		return;
+	}
+	p3 = fork();
+
+	if (p3 < 0)
+	{
+		perror("Fork failed");
+		exit(EXIT_FAILURE);
+	}
+	else if (p3 == 0)
+	{
+		if (execvp(token[0], token) == -1)
+		{
+			perror("failed to execute using execvp");
+		}
+	}
+	else
+	{
+		waitpid(p3, &status, 0);
+		if (WIFEXITED(status) && WEXITSTATUS(status) != 0)
+		{
+			fprintf(stderr, "Error: Command '%s' not found\n", command);
+		}
+	}
+}
+
+/**
+ * command_exists - checks if cmd exists
+ * @input:users input
+ *
+ * Return:0
+ */
+int command_exists(char *input)
+{
+	char *token[10];
+	char *command;
+	token[0] = strtok(input, " ");
+	command = token[0];
+
+	return (access(command, X_OK) == 0);
+}

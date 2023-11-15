@@ -18,7 +18,8 @@ void print(const char *text)
  */
 void prompt_shell(void)
 {
-	print("($) ");
+	print("#cisfun$ ");
+	fflush(stdout);
 }
 
 /**

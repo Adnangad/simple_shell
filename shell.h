@@ -10,7 +10,7 @@
 #include <sys/stat.h>
 #include <stdarg.h>
 
-
+int command_exists(char *input);
 void prompt_shell(void);
 void print(const char *text);
 void line_reader(char *input, size_t size);
