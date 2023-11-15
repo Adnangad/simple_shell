@@ -1,18 +1,23 @@
 #include "shell.h"
-
 /**
  * main - Entry point for the simple shell.
  * Return: Always 0.
  */
 int main(void)
 {
-    char input[MAX_INPUT_LENGTH];
+    char *input = NULL;
     char *token[MAX_TOKENS];
     char *envp[] = {NULL};
+    ssize_t len;
 
     while (1)
     {
-        read_input(input);
+        len = read_input(&input);
+
+        if (len == -1)
+        {
+            break;
+        }
 
         if (strcmp(input, "exit") == 0)
         {
@@ -37,6 +42,8 @@ int main(void)
             }
         }
     }
+
+    free(input);
 
     return 0;
 }

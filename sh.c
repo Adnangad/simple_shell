@@ -3,18 +3,23 @@
 /**
  * read_input - Reads input from the user.
  * @input: Buffer to store the user input.
+ *
+ *
+ * Return:len
  */
-void read_input(char *input)
+ssize_t read_input(char **input)
 {
+	ssize_t len;
+	size_t bufsize;
     print("#cisfun$ ");
-    if (fgets(input, MAX_INPUT_LENGTH, stdin) != NULL)
-    {
-        int len = strlen(input);
-        if (input[len - 1] == '\n' && len > 0)
-        {
-            input[len - 1] = '\0';
-        }
-    }
+    bufsize = 0;
+    len = getline(input, &bufsize, stdin);
+     if (len != -1 && (*input)[len - 1] == '\n')
+     {
+	     (*input)[len - 1] = '\0';
+	     len--;
+     }
+     return (len);
 }
 
 /**

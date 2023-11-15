@@ -11,7 +11,7 @@
 #include <stdarg.h>
 #define MAX_TOKENS 8
 #define MAX_INPUT_LENGTH 100
-void read_input(char *input);
+ssize_t read_input(char **input);
 void tokenize_input(char *input, char *token[MAX_TOKENS]);
 int execute_command_simple(char *token[]);
 int execute_command_with_arguments(char *token[]);
