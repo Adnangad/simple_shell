@@ -1,9 +1,10 @@
 #include "shell.h"
 
 /**
- * main - simple shell
+ * main - executes shell
  *
- * Return:0
+ *
+ * Return:none
  */
 int main(void)
 {
@@ -13,19 +14,6 @@ int main(void)
 	{
 		prompt_shell();
 		line_reader(input, sizeof(input));
-
-		if (strchr(input, ' ') == NULL && strchr(input, '/') != NULL)
-		{
-			execute(input);
-		}
-		else if (strchr(input, ' ') != NULL && strchr(input, '/') != NULL)
-		{
-			exec_arg(input);
-		}
-		if (strchr(input, '/') == NULL)
-		{
-			execp(input);
-		}
+		execute(input);
 	}
-	return (0);
 }
