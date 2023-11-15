@@ -16,4 +16,5 @@ void tokenize_input(char *input, char *token[MAX_TOKENS]);
 int execute_command_simple(char *token[]);
 int execute_command_with_arguments(char *token[]);
 int execute_command_with_path(char *token[], char *envp[]);
+void print(const char *text);
 #endif

@@ -6,7 +6,7 @@
  */
 void read_input(char *input)
 {
-    printf("#cisfun$ ");
+    print("#cisfun$ ");
     if (fgets(input, MAX_INPUT_LENGTH, stdin) != NULL)
     {
         int len = strlen(input);
