@@ -27,4 +27,6 @@ int main(void)
 			execp(input);
 		}
 	}
+	free(input);
+	return (0);
 }
