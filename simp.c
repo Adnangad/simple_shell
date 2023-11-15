@@ -9,11 +9,16 @@
 void execute(char *input)
 {
 	int status;
+	char *envp[] = {NULL};
+	char *arg[2];
 	int p1 = fork();
 
 		if (p1 == 0)
 		{
-			if (execlp(input, input, (char *)NULL) == -1)
+			arg[0] = input;
+			arg[1] = NULL;
+
+			if (execve(input, arg, envp) == -1)
 			{
 				perror("Failed to execute");
 				exit(EXIT_FAILURE);
