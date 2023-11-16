@@ -13,6 +13,8 @@ void execute(char *input)
 	char *arg[2];
 	int p1 = fork();
 
+	if (strchr(input, ' ') == NULL)
+	{
 		if (p1 == 0)
 		{
 			arg[0] = input;
@@ -33,6 +35,11 @@ void execute(char *input)
 		{
 			wait(&status);
 		}
+	}
+	else
+	{
+		exec_arg(input);
+	}
 }
 
 /**
@@ -65,10 +72,9 @@ void exec_arg(char *input)
 
 	if (p2 == 0)
 	{
-		if (execve(token[0], token, envp) == -1)
-		{
-			perror("failed to execve");
-		}
+		execve(token[0], token, envp);
+		print("Command not found");
+		exit(1);
 	}
 	else if (p2 < 0)
 	{

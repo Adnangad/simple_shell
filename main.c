@@ -18,13 +18,9 @@ int main(void)
 		{
 			break;
 		}
-		if (strchr(input, ' ') == NULL)
-		{
-			execute(input);
-		}
 		if (strchr(input, '/') != NULL)
 		{
-			exec_arg(input);
+			execute(input);
 		}
 		else
 		{
